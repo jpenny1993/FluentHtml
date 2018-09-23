@@ -54,7 +54,7 @@
             return node as TElement;
         }
 
-        public static TElement BeginElement<TElement>(this INode node)
+        public static TElement Begin<TElement>(this INode node)
                where TElement : INode
         {
             var element = Activator.CreateInstance<TElement>();
@@ -62,7 +62,7 @@
             return element;
         } 
 
-        public static INode EndElement(this INode node)
+        public static INode End(this INode node)
         {
             if (node.Parent == default(INode))
             {

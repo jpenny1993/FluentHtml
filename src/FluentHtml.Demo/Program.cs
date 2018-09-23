@@ -11,23 +11,23 @@
         {
             Node.DefaultIndent = 2;
             var webpage = new HtmlDocument()
-                .BeginElement<Head>()
+                .Begin<Head>()
                     .AddLink("icon", "image/x-icon", "favicon.ico")
-                    .BeginElement<Link>()
+                    .Begin<Link>()
                         .AddAttribute("rel", "stylesheet")
                         .AddAttribute("type", "text/css")
                         .AddAttribute("href", "theme.css")
-                    .EndElement().As<Head>()
+                    .End().As<Head>()
                     .AddScript("text/javascript", "(function () { alert('Hello World'); })();")
-                .EndElement()
-                .BeginElement<Body>()
-                    .BeginElement<Div>()
+                .End()
+                .Begin<Body>()
+                    .Begin<Div>()
                         .AddAttribute("id", "box1")
-                        .BeginElement<Paragraph>()
+                        .Begin<Paragraph>()
                             .AddText("Hello World")
-                        .EndElement()
-                    .EndElement()
-                .EndElement();
+                        .End()
+                    .End()
+                .End();
 
             Console.WriteLine(webpage);
             Console.ReadKey();
