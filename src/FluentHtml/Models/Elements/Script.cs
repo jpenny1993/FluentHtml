@@ -14,14 +14,14 @@ namespace FluentHtml.Models.Elements
 
         public Script(string type, string content) : this()
         {
-            Attributes.Add(new HtmlAttribute("type", type));
+            Attributes.Add(new HtmlAttribute(Constants.type, type));
             Children.Add(new InnerText(content));
         }
 
-        public Script(string href) : this()
+        public Script(string source) : this()
         {
-            Attributes.Add(new HtmlAttribute("type", "text/javascript"));
-            Attributes.Add(new HtmlAttribute("href", href));
+            Attributes.Add(new HtmlAttribute(Constants.type, MimeTypes.javascript));
+            Attributes.Add(new HtmlAttribute(Constants.src, source));
         }
     }
 }

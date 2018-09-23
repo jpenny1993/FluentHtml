@@ -12,7 +12,7 @@
             Node.DefaultIndent = 2;
             var webpage = new HtmlDocument()
                 .Begin<Head>()
-                    .AddLink("icon", "image/x-icon", "favicon.ico")
+                    .AddLink(Constants.icon, "image/x-icon", "favicon.ico")
                     .Begin<Link>()
                         .AddAttribute("rel", "stylesheet")
                         .AddAttribute("type", "text/css")
@@ -22,9 +22,13 @@
                 .End()
                 .Begin<Body>()
                     .Begin<Div>()
-                        .AddAttribute("id", "box1")
+                        .Id("box1")
                         .Begin<Paragraph>()
                             .AddText("Hello World")
+                            .Begin<Anchor>()
+                                .AddHref("https://www.google.co.uk")
+                                .AddText("click here")
+                            .End()
                         .End()
                     .End()
                 .End();

@@ -71,5 +71,19 @@
 
             return node.Parent;
         }
+
+        public static TElement Id<TElement>(this TElement node, string id)
+               where TElement : INode
+        {
+            node.AddAttribute(Constants.id, id);
+            return node;
+        }
+
+        public static TElement Name<TElement>(this TElement node, string name)
+               where TElement : INode
+        {
+            node.AddAttribute(Constants.name, name);
+            return node;
+        }
     }
 }
