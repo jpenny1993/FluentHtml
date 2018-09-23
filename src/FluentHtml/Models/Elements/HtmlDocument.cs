@@ -1,6 +1,7 @@
 ﻿namespace FluentHtml.Models.Elements
 {
     using System.Text;
+    using FluentHtml.Extensions;
 
     /// <summary>
     /// The <html> tag tells the browser that this is an HTML document.
@@ -22,12 +23,14 @@
 
         public override StringBuilder Draw(StringBuilder builder, int indent)
         {
+            builder.DrawIndent(indent);
+            DrawDocumentType(builder);
             return base.Draw(builder, indent);
         }
 
         private void DrawDocumentType(StringBuilder builder)
         {
-            builder.AppendLine("<!DOCTYPE ");
+            builder.Append("<!DOCTYPE ");
 
             switch (DocumentType)
             {
