@@ -57,7 +57,7 @@
                 .DrawCloseTag(TagName);
         }
         
-        public string WriteOutput()
+        public override string ToString()
         {
             return Draw(new StringBuilder(), 0).ToString();
         }

@@ -9,6 +9,6 @@
         ICollection<INode> Children { get; set; }
         INode Parent { get; set; }
         StringBuilder Draw(StringBuilder builder, int indent);
-        string WriteOutput();
+        string ToString();
     }
 }

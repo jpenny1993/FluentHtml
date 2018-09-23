@@ -17,11 +17,7 @@
                     .End()
                 .End();
 
-            int i = 1;
-            
-            var htmlOutput = webpage.WriteOutput();
-
-            Console.WriteLine(htmlOutput);
+            Console.WriteLine(webpage);
             Console.ReadKey();
         }
     }
