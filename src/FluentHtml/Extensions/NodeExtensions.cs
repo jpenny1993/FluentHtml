@@ -16,7 +16,7 @@
         {
             var element = Activator.CreateInstance<TElement>();
             element.Parent = node;
-            node.Children.Add(node);
+            node.Children.Add(element);
             return element;
         }
 
