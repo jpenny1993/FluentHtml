@@ -7,6 +7,8 @@
 
     public abstract class Node : INode
     {
+        public static int DefaultIndent = 4;
+
         protected bool IsSingleTag;
         protected string TagName;
 
@@ -41,13 +43,17 @@
                 .EndOpenTagSingle();
             }
 
+            // An indent is only required if we have child elements
+            var hasChildren = Children.Count > 0;
+            var closingIndent = hasChildren ? indent : 0;
+
             return builder
                 .DrawIndent(indent)
                 .BeginOpenTag(TagName)
                 .DrawAttributes(Attributes)
-                .EndOpenTag()
-                .DrawChildren(Children, indent)
-                .DrawIndent(indent)
+                .EndOpenTag(newLine: hasChildren)
+                .DrawChildren(Children, indent + DefaultIndent)
+                .DrawIndent(closingIndent)
                 .DrawCloseTag(TagName);
         }
         

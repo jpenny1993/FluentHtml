@@ -11,14 +11,20 @@
             return builder.Append($"<{tag}");
         }
 
-        public static StringBuilder EndOpenTag(this StringBuilder builder)
+        public static StringBuilder EndOpenTag(this StringBuilder builder, bool newLine)
         {
-            return builder.Append(">");
+            builder.Append(">");
+            if (newLine)
+            {
+                builder.AppendLine();
+            }
+
+            return builder;
         }
 
         public static StringBuilder EndOpenTagSingle(this StringBuilder builder)
         {
-            return  builder.Append("/>");
+            return  builder.AppendLine("/>");
         }
 
         public static StringBuilder DrawAttributes(this StringBuilder builder,
@@ -35,10 +41,9 @@
         public static StringBuilder DrawChildren(this StringBuilder builder,
             ICollection<INode> Children, int indent)
         {
-            var childIndent = indent + 4;
             foreach (var elem in Children)
             {
-                elem.Draw(builder, childIndent);
+                elem.Draw(builder, indent);
             }
 
             return builder;
@@ -55,7 +60,6 @@
             {
                 builder.Append(" ");
             }
-
             return builder;
         }
     }
