@@ -2,8 +2,8 @@
 {
     using System;
     using FluentHtml.Interfaces;
-    using FluentHtml.Models;
     using FluentHtml.Models.Attributes;
+    using FluentHtml.Models.Elements;
 
     public static class NodeExtensions
     {
@@ -42,7 +42,7 @@
             return node.AddElement(element);
         }
 
-        public static TElement AddInnerText<TElement>(this TElement node, string text)
+        public static TElement AddText<TElement>(this TElement node, string text)
                where TElement : INode
         {
             return node.AddElement(new InnerText(text));

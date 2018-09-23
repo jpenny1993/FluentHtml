@@ -2,12 +2,14 @@
 {
     using System;
     using FluentHtml.Extensions;
+    using FluentHtml.Models;
     using FluentHtml.Models.Elements;
 
     class Program
     {
         static void Main(string[] args)
         {
+            Node.DefaultIndent = 2;
             var webpage = new HtmlDocument()
                 .BeginElement<Head>()
                     .AddLink("icon", "image/x-icon", "favicon.ico")
@@ -22,7 +24,7 @@
                     .BeginElement<Div>()
                         .AddAttribute("id", "box1")
                         .BeginElement<Paragraph>()
-                            .AddInnerText("Hello World")
+                            .AddText("Hello World")
                         .EndElement()
                     .EndElement()
                 .EndElement();

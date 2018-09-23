@@ -17,5 +17,11 @@ namespace FluentHtml.Models.Elements
             Attributes.Add(new HtmlAttribute("type", type));
             Children.Add(new InnerText(content));
         }
+
+        public Script(string href) : this()
+        {
+            Attributes.Add(new HtmlAttribute("type", "text/javascript"));
+            Attributes.Add(new HtmlAttribute("href", href));
+        }
     }
 }

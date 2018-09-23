@@ -1,4 +1,4 @@
-﻿namespace FluentHtml.Models
+﻿namespace FluentHtml.Models.Elements
 {
     using System;
     using System.Text;
