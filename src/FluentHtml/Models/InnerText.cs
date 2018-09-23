@@ -11,7 +11,12 @@
         public InnerText() : base(string.Empty, isSingleTag: true)
         {
         }
-        
+
+        public InnerText(string content) : this()
+        {
+            Content = content;
+        }
+
         public override StringBuilder Draw(StringBuilder builder, int indent)
         {
             var lines = Content?.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries) 

@@ -1,8 +1,7 @@
-﻿namespace FluentHtml.Models.Elements
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
+﻿
+namespace FluentHtml.Models.Elements
+{ 
+    using FluentHtml.Models.Attributes;
 
     /// <summary>
     /// The <script> element is used to define client-side JavaScripts.
@@ -11,6 +10,12 @@
     {
         public Script() : base("script")
         {
+        }
+
+        public Script(string type, string content) : this()
+        {
+            Attributes.Add(new HtmlAttribute("type", type));
+            Children.Add(new InnerText(content));
         }
     }
 }

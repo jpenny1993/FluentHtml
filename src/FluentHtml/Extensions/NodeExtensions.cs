@@ -7,7 +7,8 @@
 
     public static class NodeExtensions
     {
-        public static INode AddAttribute(this INode node, string name, string value)
+        public static TElement AddAttribute<TElement>(this TElement node, string name, string value)
+               where TElement : INode
         {
             return node.AddAttribute(new HtmlAttribute
             {
@@ -16,14 +17,16 @@
             });
         }
 
-        public static INode AddAttribute<TAttribute>(this INode node, TAttribute attribute)
+        public static TElement AddAttribute<TElement, TAttribute>(this TElement node, TAttribute attribute)
+               where TElement : INode
                where TAttribute : IAttribute
         {
             node.Attributes.Add(attribute);
             return node;
         }
 
-        public static INode AddElement<TElement>(this INode node, TElement element)
+        public static PElement AddElement<PElement, TElement>(this PElement node, TElement element)
+               where PElement : INode
                where TElement : INode
         {
             element.Parent = node;
@@ -31,20 +34,25 @@
             return node;
         }
 
-        public static INode AddElement<TElement>(this INode node)
-              where TElement : INode
+        public static PElement AddElement<PElement, TElement>(this PElement node)
+               where PElement : INode
+               where TElement : INode
         {
             var element = Activator.CreateInstance<TElement>();
             return node.AddElement(element);
         }
 
-        public static INode AddInnerText(this INode node, string text)
+        public static TElement AddInnerText<TElement>(this TElement node, string text)
+               where TElement : INode
         {
-            return node.AddElement(new InnerText
-            {
-                Content = text
-            });
-        } 
+            return node.AddElement(new InnerText(text));
+        }
+
+        public static TElement As<TElement>(this INode node)
+               where TElement : class, INode
+        {
+            return node as TElement;
+        }
 
         public static TElement BeginElement<TElement>(this INode node)
                where TElement : INode
