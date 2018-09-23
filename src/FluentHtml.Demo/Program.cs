@@ -9,13 +9,18 @@
         static void Main(string[] args)
         {
             var webpage = new HtmlDocument()
-                .Begin<Head>()
-                .End()
-                .Begin<Body>()
-                    .Begin<Div>()
+                .BeginElement<Head>()
+                    .BeginElement<Script>()
+                        .AddAttribute("type", "text/javascript")
+                        .AddInnerText("(function () { alert('Hello World'); })();")
+                    .EndElement()
+                .EndElement()
+                .BeginElement<Body>()
+                    .BeginElement<Div>()
+                        .AddAttribute("id", "box1")
                         .AddElement<Paragraph>()
-                    .End()
-                .End();
+                    .EndElement()
+                .EndElement();
 
             Console.WriteLine(webpage);
             Console.ReadKey();
